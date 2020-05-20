@@ -23,6 +23,8 @@ class EnergySourceSchema(Schema):
     description = fields.Str()
     photo = fields.Str(required=True)
     location = fields.Str(required=True)
+    lat = fields.Str(required=True)
+    lng = fields.Str(required=True)
 
 
 class UserSchema(Schema):

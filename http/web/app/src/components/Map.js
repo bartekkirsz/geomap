@@ -1,10 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
-import Marker from "./Marker";
 
 // consts: [34.0522, -118.2437]
 import LOS_ANGELES_CENTER from '../const/la_center';
-import {isEmpty} from "lodash";
 import map_icon_flag_orange from './map_icon_flag_orange.svg'
 
 // Refer to https://github.com/google-map-react/google-map-react#use-google-maps-api
@@ -14,20 +12,23 @@ const handleApiLoaded = (map, maps, places) => {
     const markers = [];
     const infowindows = [];
 
+    console.log(places)
+
     places.forEach((place) => {
         markers.push(new maps.Marker({
             map,
             position: {
-                lat: place.geometry.location.lat,
-                lng: place.geometry.location.lng,
+                lat: parseFloat(place.lat),
+                lng: parseFloat(place.lng),
             },
             icon: map_icon_flag_orange
         }));
 
         infowindows.push(new maps.InfoWindow({
-            content: getInfoWindowString(place),
+            content: sourceInfo(place),
         }));
     });
+
 
     markers.forEach((marker, i) => {
         marker.addListener('click', () => {
@@ -58,6 +59,25 @@ const getInfoWindowString = place => `
       </div>
     </div>`;
 
+
+const sourceInfo = place => `
+    <div>
+      <div style="font-size: 16px;">
+        ${place.source_type}
+      </div>
+      <div style="font-size: 16px;">
+        ${place.location}
+      </div>
+      <div style="font-size: 16px;">
+        ${place.name}
+      </div>
+      <div style="font-size: 16px;">
+        ${place.manufacturer}
+      </div>
+      
+    </div>`;
+
+
 class Map extends Component {
     constructor(props) {
         super(props);
@@ -68,13 +88,14 @@ class Map extends Component {
     }
 
     componentDidMount() {
-        fetch('places.json')
+        fetch('/energy_sources')
             .then(response => response.json())
             .then((data) => {
-                data.results.forEach((result) => {
-                    result.show = false; // eslint-disable-line no-param-reassign
-                });
-                this.setState({places: data.results});
+                // data.forEach((result) => {
+                //     result.show = false; // eslint-disable-line no-param-reassign
+                // });
+                // console.log(data)
+                this.setState({places: data});
             });
     }
 
@@ -82,7 +103,7 @@ class Map extends Component {
         const {places} = this.state;
         return (
             // Important! Always set the container height explicitly
-            <div style={{height: '100vh', width: '100%'}}>
+            <div style={{height: '100vh', width: '130vh', position: 'absolute', right: '0px'}}>
                 <GoogleMapReact
                     bootstrapURLKeys={{key: ''}}
                     defaultCenter={LOS_ANGELES_CENTER}
@@ -90,24 +111,8 @@ class Map extends Component {
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({map, maps}) => handleApiLoaded(map, maps, places)}
                 >
-                    {/*{places.map(place => (*/}
-                    {/*    <Marker*/}
-                    {/*        key={place.id}*/}
-                    {/*        text={place.name}*/}
-                    {/*        lat={place.geometry.location.lat}*/}
-                    {/*        lng={place.geometry.location.lng}*/}
-                    {/*    />*/}
-                    {/*))}*/}
-
                 </GoogleMapReact>
             </div>
-            //         <GoogleMapReact
-            //             defaultZoom={10}
-            //             defaultCenter={LOS_ANGELES_CENTER}
-            //             bootstrapURLKeys={{key: 'AIzaSyAcrFzBwTJcYYLEjhS7mwu22tOP6qdhXGo'}}
-            //             yesIWantToUseGoogleMapApiInternals
-            //             onGoogleApiLoaded={({map, maps}) => handleApiLoaded(map, maps, places)}
-            //         />
         );
     }
 }

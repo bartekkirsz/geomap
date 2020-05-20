@@ -1,32 +1,29 @@
 // src/App.js
 
 import React from "react";
-import NavBar from "./components/NavBar";
-import { useAuth0 } from "./react-auth0-spa";
-import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./components/Profile";
-import history from "./utils/history";
-import PrivateRoute from "./components/PrivateRoutes";
-import RegisterForm from "./components/RegisterForm";
+import Map from "./components/Map";
 
-function Login() {
-  return (
-    <div className="Home">
-      {/* Don't forget to include the history module */}
-      <Router history={history}>
-        <header>
-          <NavBar />
-        </header>
-        <Switch>
-          <Route path="/" exact />
-          <PrivateRoute path="/profile" component={Profile} />
-          <RegisterForm/>
-        </Switch>
-      </Router>
-    </div>
-  );
+import {connect} from 'react-redux';
+
+class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {logged: false};
+    }
+
+    render() {
+        return (
+            <Map/>
+        );
+    }
 }
 
+const mapStateToProps = state => {
+    return {
+        logged: state
+    };
+};
 
 
-export default Login;
+export default connect(mapStateToProps, null)(Home);

@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Login from './Login';
-import Map from "./components/Map";
+import {GoogleLogin} from './GoogleLogin';
 
 function App() {
     return (
         <div>
-            <Login/>
+            <GoogleLogin/>
         </div>
     );
 }
