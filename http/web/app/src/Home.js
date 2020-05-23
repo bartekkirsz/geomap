@@ -2,8 +2,12 @@
 
 import React from "react";
 import Map from "./components/Map";
+import {Filters} from "./components/Filters"
 
 import {connect} from 'react-redux';
+import {SourceCreate} from "./components/SourceCreate";
+import Profile from "./components/Profile";
+import {Footer} from "./components/Footer";
 
 class Home extends React.Component {
 
@@ -14,7 +18,13 @@ class Home extends React.Component {
 
     render() {
         return (
-            <Map/>
+            <div>
+                <Profile/>
+                <Filters/>
+                <SourceCreate/>
+                <Map/>
+            </div>
+
         );
     }
 }

@@ -21,14 +21,14 @@ const onRedirectCallback = appState => {
 };
 
 const reducer = function (logged = true, action) {
-  switch (action.type) {
-    case "SET_LOGGED":
-      return true;
-    case "LOGGED_OUT":
-      return false;
-    default:
-      return logged;
-  }
+    switch (action.type) {
+        case "SET_LOGGED":
+            return true;
+        case "LOGGED_OUT":
+            return false;
+        default:
+            return logged;
+    }
 };
 let store = createStore(reducer);
 

@@ -1,0 +1,29 @@
+<Nav
+                    activeKey="/"
+                    onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+                >
+                    <Nav.Item>
+                        <Nav.Link><Link to="/">Mapa</Link></Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link><Link to="/profile">Profil</Link></Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link><Link to="/contact">Kontakt</Link></Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link><Link to="/pomoc">Pomoc</Link></Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item style={{"right": "0px"}}>
+                        <Nav.Link ><button style={{"right": "0px"}} onClick={() => logout()}>Wyloguj</button></Nav.Link>
+                    </Nav.Item>
+
+                </Nav>
+
+
+
+
+                <Nav.Link><Link to="/">Mapa</Link></Nav.Link>
+                        <Nav.Link><Link to="/contact">Kontakt</Link></Nav.Link>
+                        <Nav.Link><Link to="/profile">Profil</Link></Nav.Link>
+                        <Nav.Link><Link to="/pomoc">Pomoc</Link></Nav.Link>
