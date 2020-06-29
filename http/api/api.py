@@ -6,7 +6,7 @@ from marshmallow import Schema, fields
 from bson.json_util import dumps
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = 'mongodb://localhost:27017/geomap'
+app.config["MONGO_URI"] = 'mongodb://ds113906.mlab.com:13906/heroku_vcgg5jwm'
 mongo = PyMongo(app)
 
 api = Api(app)
