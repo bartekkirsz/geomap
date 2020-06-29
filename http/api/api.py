@@ -80,10 +80,6 @@ def filter_energy_sources():
 
     return dumps(list(energy_sources))
 
-@app.route('map_key', methods=['GET'])
-def get_google_map_key():
-    return 'AIzaSyDYUxRGQlsfZZ688F2p4Fq0rkU3Q4yLD78'
-
 
 class EnergySourceSchema(Schema):
     source_type = fields.Str(required=True)
