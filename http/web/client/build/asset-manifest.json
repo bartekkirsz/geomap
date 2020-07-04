@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.050523cc.chunk.css",
+    "main.js": "/static/js/main.ede240af.chunk.js",
+    "main.js.map": "/static/js/main.ede240af.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e4248718.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e4248718.js.map",
+    "static/css/2.2ce93ba3.chunk.css": "/static/css/2.2ce93ba3.chunk.css",
+    "static/js/2.7868b59f.chunk.js": "/static/js/2.7868b59f.chunk.js",
+    "static/js/2.7868b59f.chunk.js.map": "/static/js/2.7868b59f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.3b81431acac00b98e8f45150be1a4771.js": "/precache-manifest.3b81431acac00b98e8f45150be1a4771.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.2ce93ba3.chunk.css.map": "/static/css/2.2ce93ba3.chunk.css.map",
+    "static/css/main.050523cc.chunk.css.map": "/static/css/main.050523cc.chunk.css.map",
+    "static/js/2.7868b59f.chunk.js.LICENSE.txt": "/static/js/2.7868b59f.chunk.js.LICENSE.txt",
+    "static/media/UploadIcon.svg": "/static/media/UploadIcon.1cedb6e9.svg",
+    "static/media/biofuel.svg": "/static/media/biofuel.beb6d82a.svg",
+    "static/media/fotowoltaika.svg": "/static/media/fotowoltaika.6de9aed3.svg",
+    "static/media/geotermia.svg": "/static/media/geotermia.d326035c.svg",
+    "static/media/hydro-power.svg": "/static/media/hydro-power.3f756d61.svg",
+    "static/media/pompa_ciepla.svg": "/static/media/pompa_ciepla.86b30b49.svg",
+    "static/media/solar-energy.svg": "/static/media/solar-energy.23b9c476.svg",
+    "static/media/wind-power.svg": "/static/media/wind-power.d97dfe7e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e4248718.js",
+    "static/css/2.2ce93ba3.chunk.css",
+    "static/js/2.7868b59f.chunk.js",
+    "static/css/main.050523cc.chunk.css",
+    "static/js/main.ede240af.chunk.js"
+  ]
+}

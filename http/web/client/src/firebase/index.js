@@ -3,7 +3,7 @@ import 'firebase/storage';
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyA5mnKTiz-T7swjmDCB7tlFpMGhgOUWFxE",
+  apiKey: "",
     authDomain: "geomap-deb38.firebaseapp.com",
     databaseURL: "https://geomap-deb38.firebaseio.com",
     projectId: "geomap-deb38",

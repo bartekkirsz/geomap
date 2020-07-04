@@ -1,21 +1,26 @@
 from bson import ObjectId
-from flask import Flask, json, request, escape
+from flask import Flask, json, request
 from flask_restful import Api, Resource
 from flask_pymongo import PyMongo
 from marshmallow import Schema, fields
 from bson.json_util import dumps
+import os
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = 'mongodb://ds113906.mlab.com:13906/heroku_vcgg5jwm'
+# app.config["MONGO_URI"] = 'mongodb://localhost:27017/geomap'
+
+app.config['MONGODB_SETTINGS'] = {
+    'host': os.environ['MONGODB_HOST'],
+    'username': os.environ['MONGODB_USERNAME'],
+    'password': os.environ['MONGODB_PASSWORD'],
+    'db': 'geomap'
+}
 mongo = PyMongo(app)
 
 api = Api(app)
 
-
 @app.route('/filter', methods=['POST'])
 def filter_energy_sources():
-    # filterType = request.get_json()['filter_type']
-    # filterBy = request.get_json()['filter_by']
     power = ''
     price = ''
     source_type = ''
@@ -80,7 +85,6 @@ def filter_energy_sources():
 
     return dumps(list(energy_sources))
 
-
 class EnergySourceSchema(Schema):
     source_type = fields.Str(required=True)
     name = fields.Str(required=True)
@@ -139,4 +143,4 @@ api.add_resource(EnergySources, '/energy_sources')
 api.add_resource(EnergySource, '/energy_sources/<resource_id>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

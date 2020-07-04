@@ -1,3 +1,21 @@
+aniso8601==8.0.0
+bson==0.5.10
+click==7.1.2
+Flask==1.1.2
+Flask-PyMongo==2.3.0
+Flask-RESTful==0.3.8
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+marshmallow==3.6.0
+pymongo==3.10.1
+python-dateutil==2.8.1
+pytz==2020.1
+six==1.15.0
+Werkzeug==1.0.1
+gunicorn==20.0.4
+flask-mongoengine-0.9.5
+
 version: '3.7'
 services:
   client:
@@ -11,7 +29,7 @@ services:
       - ./http/web/client:/client
       - /client/node_modules
     networks:
-      - frontend
+      - client
   mongo:
     image: mongo
     container_name: mongo
@@ -25,7 +43,7 @@ services:
     volumes:
       - mongodbdata:/data/db
     networks:
-      - backend
+      - api
     ports:
       - "27017:27017"
   api:
@@ -41,18 +59,15 @@ services:
       MONGODB_PASSWORD: "luneczka"
     depends_on:
       - mongo
-    volumes:
-      - appdata:/var/www/
     networks:
-      - frontend
-      - backend
+      - client
+      - api
 networks:
-    frontend:
+    client:
       driver: bridge
-    backend:
+    api:
       driver: bridge
 volumes:
-    mongodbdata:
-        driver: local
-    appdata:
-        driver: local
+  mongodbdata:
+    driver: local
+

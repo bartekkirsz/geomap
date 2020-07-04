@@ -179,7 +179,7 @@ class Map extends Component {
             // <div style={{'z-index': 2, height: '80vh', width: '140vh', position: 'relative', float: 'right'}}>
                 <div style={{height: '80vh', width: '65vw', position: 'relative', float: 'right'}}>
                     <GoogleMapReact
-                        bootstrapURLKeys={{key: 'AIzaSyDYUxRGQlsfZZ688F2p4Fq0rkU3Q4yLD78'}}
+                        bootstrapURLKeys={{key: ''}}
                         defaultCenter={LOS_ANGELES_CENTER}
                         defaultZoom={16}
                         yesIWantToUseGoogleMapApiInternals
